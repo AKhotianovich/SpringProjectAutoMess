@@ -1,7 +1,6 @@
 package by.hotianovich.automess.models;
 
 //import javax.persistence.*;
-import java.lang.*;
 import jakarta.persistence.*;
 
 @Entity

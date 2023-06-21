@@ -1,8 +1,10 @@
 package by.hotianovich.automess.models;
 
 
-import javax.persistence.*;
+//import javax.persistence.*;
 
+
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Make")
