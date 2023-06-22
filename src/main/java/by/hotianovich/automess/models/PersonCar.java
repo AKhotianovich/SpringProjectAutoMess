@@ -14,12 +14,11 @@ public class PersonCar {
     @Column(name = "id")
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "makeId", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Make makeId;
 
-    @Column(name = "person_id")
-    private int personId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Person personId;
 
     @Column(name = "car_model")
     private String carModel;
