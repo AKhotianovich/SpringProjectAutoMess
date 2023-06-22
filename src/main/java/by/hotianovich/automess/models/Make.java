@@ -1,10 +1,9 @@
 package by.hotianovich.automess.models;
 
 
-//import javax.persistence.*;
+import javax.persistence.*;
 
 
-import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Make")
@@ -12,6 +11,7 @@ public class Make {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ManyToOne
     private int id;
 
     @Column(name = "mark")
