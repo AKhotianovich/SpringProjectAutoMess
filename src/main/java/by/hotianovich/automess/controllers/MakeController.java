@@ -13,17 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/make")
 public class MakeController {
 
-    private MakeService makeService;
 
-    @Autowired
-    public MakeController(MakeService makeService) {
-        this.makeService = makeService;
-    }
-
-    @GetMapping()
-    public String showMake(Model model){
-        model.addAttribute("make", makeService.findAll());
-        return "make/makeShow";
-    }
 
 }

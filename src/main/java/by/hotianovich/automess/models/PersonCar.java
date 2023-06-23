@@ -14,10 +14,12 @@ public class PersonCar {
     @Column(name = "id")
     private int id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
+    @JoinColumn(name = "make_id", referencedColumnName = "id")
     private Make makeId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
+    @JoinColumn(name = "person_id", referencedColumnName = "id")
     private Person personId;
 
     @Column(name = "car_model")
@@ -28,4 +30,65 @@ public class PersonCar {
 
     @Column(name = "car_vin")
     private String carVin;
+
+
+
+
+//    public PersonCar(String carModel, String licensePlate, String carVin) {
+//        this.carModel = carModel;
+//        this.licensePlate = licensePlate;
+//        this.carVin = carVin;
+//    }
+
+    public PersonCar() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Make getMakeId() {
+        return makeId;
+    }
+
+    public void setMakeId(Make makeId) {
+        this.makeId = makeId;
+    }
+
+    public Person getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(Person personId) {
+        this.personId = personId;
+    }
+
+    public String getCarModel() {
+        return carModel;
+    }
+
+    public void setCarModel(String carModel) {
+        this.carModel = carModel;
+    }
+
+    public String getLicensePlate() {
+        return licensePlate;
+    }
+
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
+    }
+
+    public String getCarVin() {
+        return carVin;
+    }
+
+    public void setCarVin(String carVin) {
+        this.carVin = carVin;
+    }
+
 }

@@ -9,17 +9,16 @@
 </head>
 <body>
 <div class="frame">
-    <p th:text="${person.getName()} + ', ' + ${person.getYear()}">reader</p>
+    <p th:text="${person.getFirstName()} + ', ' + ${person.getLastName()}">reader</p>
     <br>
-    <div th:if="${books}">
+    <div th:if="${personCar}">
         <hr/>
-        <p><b>Книги:</b></p>
-        <div th:each="book : ${books}">
-            <a th:style="${book.isExpired()} ? 'color: red' : 'color: black'"
-               th:text="${book.getTitle()} + ', ' + ${book.getAuthor()} + ', ' + ${book.getYear()}">book</a>
+        <p><b>Авто:</b></p>
+        <div th:each="personCar : ${personCars}">
+            <a th:text="${personCar.getCarModel()} + ', ' + ${personCar.getLicensePlate()}">personCar</a>
         </div>
     </div>
-    <div th:unless="${books}">
+    <div th:unless="${personCars}">
         <p>Человек пока не взял ни одной книги</p>
     </div>
     <br>

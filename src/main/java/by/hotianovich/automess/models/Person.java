@@ -1,7 +1,7 @@
 package by.hotianovich.automess.models;
 
-//import javax.persistence.*;
-import jakarta.persistence.*;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="Person")
@@ -34,17 +34,21 @@ public class Person {
     private String phone_number;
 
 
+    @OneToMany(mappedBy = "personId")
+    private List<PersonCar> cars;
+
+
     public Person() {
     }
 
-    public Person(String login, String password, String firstName, String lastName, String email, String phone_number) {
-        this.login = login;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phone_number = phone_number;
-    }
+//    public Person(String login, String password, String firstName, String lastName, String email, String phone_number) {
+//        this.login = login;
+//        this.password = password;
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.email = email;
+//        this.phone_number = phone_number;
+//    }
 
     public int getId() {
         return id;
@@ -100,5 +104,13 @@ public class Person {
 
     public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
+    }
+
+    public List<PersonCar> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<PersonCar> cars) {
+        this.cars = cars;
     }
 }
