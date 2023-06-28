@@ -24,4 +24,8 @@ public class PersonCarService {
     public List<PersonCar> findByCarModel(Person person) {
         return personCarRepository.findByCarModel(person);
     }
+
+    public List<PersonCar> findByLicensePlateContaining(String licensePlate) {
+        return personCarRepository.findByLicensePlateContaining(licensePlate);
+    }
 }
