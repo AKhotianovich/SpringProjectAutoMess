@@ -1,8 +1,8 @@
 package by.hotianovich.automess.controllers;
 
-import by.hotianovich.automess.models.Make;
-import by.hotianovich.automess.models.Person;
-import by.hotianovich.automess.models.PersonCar;
+import by.hotianovich.automess.entity.Make;
+import by.hotianovich.automess.entity.Person;
+import by.hotianovich.automess.entity.PersonCar;
 import by.hotianovich.automess.services.MakeService;
 import by.hotianovich.automess.services.PeopleService;
 import by.hotianovich.automess.services.PersonCarService;
@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -40,11 +40,11 @@ public class CarController {
         List<Make> makes = makeService.findAll();
         model.addAttribute("makes", makes);
 
-        return "car-list";
+        return "index";
     }
 
 
-    @GetMapping("/search")
+    @GetMapping("/cars/search")
     public String searchCars(@RequestParam("licensePlate") String licensePlate, Model model) {
         List<PersonCar> cars = personCarService.findByLicensePlateContaining(licensePlate);
         model.addAttribute("cars", cars);
@@ -54,7 +54,19 @@ public class CarController {
 
         List<Make> makes = makeService.findAll();
         model.addAttribute("makes", makes);
-        return "car-list";
+        return "index";
+    }
+
+
+    @GetMapping("/{id}")
+    public String showPerson(@PathVariable("id") int id, Model model) {
+        Person person = peopleService.findOneById(id);
+        List<PersonCar> PersonCar = personCarService.findByPersonId(person);
+        model.addAttribute("person", person);
+        if (!PersonCar.isEmpty()) {
+            model.addAttribute("PersonCar", PersonCar);
+        }
+        return "people/profile";
     }
 }
 

@@ -1,5 +1,4 @@
-package by.hotianovich.automess.models;
-
+package by.hotianovich.automess.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -17,7 +16,7 @@ public class Make {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "mark")
     private String mark;

@@ -1,4 +1,4 @@
-package by.hotianovich.automess.models;
+package by.hotianovich.automess.entity;
 
 
 
@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
 
 @Entity
 @Table(name = "person_car")
@@ -19,7 +18,7 @@ public class PersonCar {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "make_id", referencedColumnName = "id")

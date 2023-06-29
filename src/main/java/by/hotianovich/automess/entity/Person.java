@@ -1,4 +1,4 @@
-package by.hotianovich.automess.models;
+package by.hotianovich.automess.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -16,7 +16,7 @@ public class Person {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(name = "login")
     //@Size(min = 2, max = 100, message = "not valid")
@@ -43,6 +43,5 @@ public class Person {
 
     @OneToMany(mappedBy = "personId")
     private List<PersonCar> cars;
-
 
 }
