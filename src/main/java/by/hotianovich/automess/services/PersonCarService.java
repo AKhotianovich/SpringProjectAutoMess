@@ -5,6 +5,9 @@ import by.hotianovich.automess.entity.Person;
 import by.hotianovich.automess.entity.PersonCar;
 import by.hotianovich.automess.repositories.PersonCarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
@@ -20,8 +23,9 @@ public class PersonCarService {
         this.personCarRepository = personCarRepository;
     }
 
-    public List<PersonCar> findAll(){
-        return personCarRepository.findAll();
+    public Page<PersonCar> findAll(int page, int pageSize) {
+        Pageable pageable = PageRequest.of(page, pageSize);
+        return personCarRepository.findAll(pageable);
     }
 
     public List<PersonCar> findByPersonId(Person person) {

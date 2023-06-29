@@ -7,6 +7,7 @@ import by.hotianovich.automess.services.MakeService;
 import by.hotianovich.automess.services.PeopleService;
 import by.hotianovich.automess.services.PersonCarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,30 +31,22 @@ public class CarController {
     }
 
     @GetMapping("/cars")
-    public String getCars(Model model) {
-        List<PersonCar> personCars = personCarService.findAll();
-        model.addAttribute("personCars", personCars);
-
-        List<Person> people = peopleService.findAll();
-        model.addAttribute("people", people);
-
-        List<Make> makes = makeService.findAll();
-        model.addAttribute("makes", makes);
-
+    public String showCars(@RequestParam(value = "page", defaultValue = "0") int page,
+                           @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
+                           Model model) {
+        Page<PersonCar> carPage = personCarService.findAll(page, pageSize);
+        model.addAttribute("personCars", carPage.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", carPage.getTotalPages());
         return "index";
     }
+
 
 
     @GetMapping("/cars/search")
     public String searchCars(@RequestParam("licensePlate") String licensePlate, Model model) {
         List<PersonCar> cars = personCarService.findByLicensePlateContaining(licensePlate);
-        model.addAttribute("cars", cars);
-
-        List<Person> people = peopleService.findAll();
-        model.addAttribute("people", people);
-
-        List<Make> makes = makeService.findAll();
-        model.addAttribute("makes", makes);
+        model.addAttribute("personCars", cars);
         return "index";
     }
 
