@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PersonCarService {
@@ -26,6 +27,11 @@ public class PersonCarService {
     public Page<PersonCar> findAll(int page, int pageSize) {
         Pageable pageable = PageRequest.of(page, pageSize);
         return personCarRepository.findAll(pageable);
+    }
+
+    public PersonCar findOneById(int id) {
+        Optional<PersonCar> personCar = personCarRepository.findById(id);
+        return personCar.orElse(null);
     }
 
     public List<PersonCar> findByPersonId(Person person) {

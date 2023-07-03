@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,7 +42,10 @@ public class CarController {
         return "index";
     }
 
-
+    @ExceptionHandler(IllegalArgumentException.class)
+    public String handleIllegalArgumentException() {
+        return "redirect:/cars";
+    }
 
     @GetMapping("/cars/search")
     public String searchCars(@RequestParam("licensePlate") String licensePlate, Model model) {
@@ -53,13 +57,9 @@ public class CarController {
 
     @GetMapping("/{id}")
     public String showPerson(@PathVariable("id") int id, Model model) {
-        Person person = peopleService.findOneById(id);
-        List<PersonCar> PersonCar = personCarService.findByPersonId(person);
-        model.addAttribute("person", person);
-        if (!PersonCar.isEmpty()) {
-            model.addAttribute("PersonCar", PersonCar);
-        }
-        return "people/profile";
+        PersonCar personCar = personCarService.findOneById(id);
+        model.addAttribute("personCars", personCar);
+        return "car/showCar";
     }
 }
 

@@ -4,16 +4,12 @@
     <meta charset="UTF-8">
     <title>Car List</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
+
 </head>
 <div th:insert="~{forms/header :: header}"></div>
 <body>
 <div class="container">
-
-<!--    &lt;!&ndash; Добавленная строка поиска &ndash;&gt;-->
-<!--    <form action="/cars/search" method="get" class="form-inline mb-3">-->
-<!--        <input type="text" name="licensePlate" class="form-control mr-2" placeholder="Search by License Plate">-->
-<!--        <button type="submit" class="btn btn-primary">Search</button>-->
-<!--    </form>-->
 
     <h1>Car List</h1>
     <table id="example" class="table table-striped table-bordered">
@@ -25,17 +21,25 @@
             <th>Make</th>
         </tr>
         <tbody id="carTableBody">
-        <!-- Здесь будут отображаться записи -->
-        <!-- Используйте Thymeleaf для заполнения данных -->
-        <tr th:each="personCar : ${personCars}">
+        <tr th:each="personCar : ${personCars}" th:data-person-id="${personCar.id}" onclick="redirectToProfile(this)">
             <td th:text="${personCar.carModel}"></td>
             <td th:text="${personCar.licensePlate}"></td>
             <td th:text="${personCar.personId.firstName}"></td>
-            <td th:text="${personCar.personId.phone_number}"></td>
+            <td th:text="${personCar.personId.phoneNumber}"></td>
             <td th:text="${personCar.makeId.mark}"></td>
+<!--            <td> &lt;!&ndash; Добавлена ячейка для ссылки на профиль &ndash;&gt;-->
+<!--                <a th:href="@{'/' + ${personCar.id}}">Profile</a>-->
+<!--            </td>-->
         </tr>
         </tbody>
     </table>
+
+    <script>
+        function redirectToProfile(row) {
+            var personId = row.getAttribute("data-person-id");
+            window.location.href = "/" + personId;
+        }
+    </script>
 
     <!-- Кнопка "Показать еще" -->
     <button id="showMoreButton" class="btn btn-primary" data-page="0">Показать еще</button>
@@ -44,7 +48,41 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var page = 1;
+            var pageSize = 10;
 
+            // Функция для загрузки данных с сервера
+            function loadMoreData() {
+                // Выполните AJAX-запрос для загрузки данных на сервере
+                $.ajax({
+                    url: "/cars?page=" + page, // Добавлено значение page в URL-адресе
+                    type: "GET",
+                    data: {
+                        pageSize: pageSize
+                    },
+                    success: function (data) {
+                        // Обработайте полученные данные и добавьте их в таблицу
+                        var table = $('#example').DataTable();
+                        table.rows.add(data).draw();
+
+                        // Увеличьте номер страницы
+                        page++;
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            }
+
+            // Обработчик события клика на кнопке "Показать еще"
+            $('#showMoreButton').click(function () {
+                loadMoreData();
+            });
+        });
+    </script>
 </div>
 </body>
+<div th:insert="~{forms/footer :: footer}"></div>
 </html>
