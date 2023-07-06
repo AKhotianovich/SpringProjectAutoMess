@@ -1,6 +1,5 @@
 package by.hotianovich.automess.repositories;
 
-
 import by.hotianovich.automess.entity.Person;
 import by.hotianovich.automess.entity.PersonCar;
 import org.springframework.data.jpa.repository.JpaRepository;

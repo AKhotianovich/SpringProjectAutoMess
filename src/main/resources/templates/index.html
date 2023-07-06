@@ -5,6 +5,7 @@
     <title>Car List</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
+<!--    <script src="../static/js/script.js"></script>-->
 
 </head>
 <div th:insert="~{forms/header :: header}"></div>
@@ -34,6 +35,7 @@
         </tbody>
     </table>
 
+    </div>
     <script>
         function redirectToProfile(row) {
             var personId = row.getAttribute("data-person-id");
@@ -41,47 +43,14 @@
         }
     </script>
 
-    <!-- Кнопка "Показать еще" -->
-    <button id="showMoreButton" class="btn btn-primary" data-page="0">Показать еще</button>
+
+<!--    <button id="showMoreButton" class="btn btn-primary" data-page="0">Показать еще</button>-->
 
     <!-- Скрипты -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            var page = 1;
-            var pageSize = 10;
 
-            // Функция для загрузки данных с сервера
-            function loadMoreData() {
-                // Выполните AJAX-запрос для загрузки данных на сервере
-                $.ajax({
-                    url: "/cars?page=" + page, // Добавлено значение page в URL-адресе
-                    type: "GET",
-                    data: {
-                        pageSize: pageSize
-                    },
-                    success: function (data) {
-                        // Обработайте полученные данные и добавьте их в таблицу
-                        var table = $('#example').DataTable();
-                        table.rows.add(data).draw();
-
-                        // Увеличьте номер страницы
-                        page++;
-                    },
-                    error: function (xhr, status, error) {
-                        console.error(error);
-                    }
-                });
-            }
-
-            // Обработчик события клика на кнопке "Показать еще"
-            $('#showMoreButton').click(function () {
-                loadMoreData();
-            });
-        });
-    </script>
 </div>
 </body>
 <div th:insert="~{forms/footer :: footer}"></div>

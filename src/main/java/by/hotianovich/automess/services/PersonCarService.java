@@ -9,7 +9,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,14 +18,18 @@ public class PersonCarService {
 
     private final PersonCarRepository personCarRepository;
 
-    @Autowired
+
     public PersonCarService(PersonCarRepository personCarRepository) {
         this.personCarRepository = personCarRepository;
     }
 
-    public Page<PersonCar> findAll(int page, int pageSize) {
-        Pageable pageable = PageRequest.of(page, pageSize);
-        return personCarRepository.findAll(pageable);
+    public List<PersonCar> findAll() {
+        return personCarRepository.findAll();
+    }
+
+    public Page<PersonCar> getPageOfPersonCars(Integer offset, Integer limit){
+        Pageable nextPage = PageRequest.of(offset,limit);
+        return personCarRepository.findAll(nextPage);
     }
 
     public PersonCar findOneById(int id) {

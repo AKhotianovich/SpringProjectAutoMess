@@ -14,7 +14,6 @@ public class MakeService {
 
     private final MakeRepository makeRepository;
 
-    @Autowired
     public MakeService(MakeRepository makeRepository) {
         this.makeRepository = makeRepository;
     }
