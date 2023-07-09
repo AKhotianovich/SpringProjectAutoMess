@@ -4,6 +4,7 @@ package by.hotianovich.automess.services;
 import by.hotianovich.automess.entity.Person;
 import by.hotianovich.automess.entity.PersonCar;
 import by.hotianovich.automess.repositories.PersonCarRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,14 +15,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class PersonCarService {
 
     private final PersonCarRepository personCarRepository;
 
-
-    public PersonCarService(PersonCarRepository personCarRepository) {
-        this.personCarRepository = personCarRepository;
-    }
 
     public List<PersonCar> findAll() {
         return personCarRepository.findAll();
@@ -43,5 +41,9 @@ public class PersonCarService {
 
     public List<PersonCar> findByLicensePlateContaining(String licensePlate) {
         return personCarRepository.findByLicensePlateContaining(licensePlate);
+    }
+
+    public List<PersonCar> findTagMakeCar(String tag) {
+        return personCarRepository.findTagMakeCar(tag);
     }
 }

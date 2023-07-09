@@ -1,10 +1,11 @@
 package by.hotianovich.automess.controllers;
 
+import by.hotianovich.automess.dto.TagDto;
+import by.hotianovich.automess.entity.Make;
 import by.hotianovich.automess.entity.PersonCar;
+import by.hotianovich.automess.services.MakeService;
 import by.hotianovich.automess.services.PersonCarService;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,11 @@ import java.util.List;
 public class CarController {
 
     private final PersonCarService personCarService;
+
+    private final MakeService makeService;
+
+    @ModelAttribute("tagDto")
+    public List<Make> tagAndCount() { return makeService.findAll(); }
 
 
     @GetMapping("/")

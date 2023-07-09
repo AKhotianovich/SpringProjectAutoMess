@@ -5,7 +5,11 @@
     <title>Car List</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
-<!--    <script src="../static/js/script.js"></script>-->
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="trash/jqcloud.css">
+    <!--    <script src="../static/js/script.js"></script>-->
 
 </head>
 <div th:insert="~{forms/header :: header}"></div>
@@ -34,6 +38,8 @@
         </tr>
         </tbody>
     </table>
+
+    <div class="Tags" id="tags" th:replace="~{forms/tags}"></div>
 
     </div>
     <script>
