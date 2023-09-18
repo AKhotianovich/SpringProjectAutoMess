@@ -26,14 +26,14 @@
             <th>Make</th>
         </tr>
         <tbody id="carTableBody">
-        <tr th:each="personCar : ${personCars}" th:data-person-id="${personCar.id}" onclick="redirectToProfile(this)">
-            <td th:text="${personCar.carModel}"></td>
-            <td th:text="${personCar.licensePlate}"></td>
-            <td th:text="${personCar.personId.firstName}"></td>
-            <td th:text="${personCar.personId.phoneNumber}"></td>
-            <td th:text="${personCar.makeId.mark}"></td>
+        <tr th:each="userCar : ${userCar}" th:data-user-id="${userCar.id}" onclick="redirectToProfile(this)">
+            <td th:text="${userCar.carModel}"></td>
+            <td th:text="${userCar.licensePlate}"></td>
+            <td th:text="${userCar.getUserId.firstName}"></td>
+            <td th:text="${userCar.getUserId.phoneNumber}"></td>
+            <td th:text="${userCar.brandId.brand_name}"></td>
 <!--            <td> &lt;!&ndash; Добавлена ячейка для ссылки на профиль &ndash;&gt;-->
-<!--                <a th:href="@{'/' + ${personCar.id}}">Profile</a>-->
+<!--                <a th:href="@{'/' + ${userCar.id}}">Profile</a>-->
 <!--            </td>-->
         </tr>
         </tbody>
@@ -44,7 +44,7 @@
     </div>
     <script>
         function redirectToProfile(row) {
-            var personId = row.getAttribute("data-person-id");
+            var personId = row.getAttribute("data-user-id");
             window.location.href = "/" + personId;
         }
     </script>

@@ -1,10 +1,9 @@
 package by.hotianovich.automess.controllers;
 
-import by.hotianovich.automess.dto.TagDto;
-import by.hotianovich.automess.entity.Make;
-import by.hotianovich.automess.entity.PersonCar;
-import by.hotianovich.automess.services.MakeService;
-import by.hotianovich.automess.services.PersonCarService;
+import by.hotianovich.automess.entity.CarBrands;
+import by.hotianovich.automess.entity.UserCar;
+import by.hotianovich.automess.services.CarBrandService;
+import by.hotianovich.automess.services.UserCarService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,17 +17,17 @@ import java.util.List;
 @AllArgsConstructor
 public class CarController {
 
-    private final PersonCarService personCarService;
+    private final UserCarService userCarService;
 
-    private final MakeService makeService;
+    private final CarBrandService carBrandService;
 
     @ModelAttribute("tagDto")
-    public List<Make> tagAndCount() { return makeService.findAll(); }
+    public List<CarBrands> tagAndCount() { return carBrandService.findAll(); }
 
 
     @GetMapping("/")
     public String showCars(Model model) {
-        model.addAttribute("personCars", personCarService.findAll());
+        model.addAttribute("userCar", userCarService.findAll());
         return "index";
     }
 
@@ -39,7 +38,7 @@ public class CarController {
 
     @GetMapping("/search")
     public String searchCars(@RequestParam("licensePlate") String licensePlate, Model model) {
-        List<PersonCar> cars = personCarService.findByLicensePlateContaining(licensePlate);
+        List<UserCar> cars = userCarService.findByLicensePlateContaining(licensePlate);
         model.addAttribute("personCars", cars);
         return "index";
     }
@@ -47,8 +46,8 @@ public class CarController {
 
     @GetMapping("/{id}")
     public String showPerson(@PathVariable("id") int id, Model model) {
-        PersonCar personCar = personCarService.findOneById(id);
-        model.addAttribute("personCars", personCar);
+        UserCar userCar = userCarService.findOneById(id);
+        model.addAttribute("personCars", userCar);
         return "car/showCar";
     }
 }

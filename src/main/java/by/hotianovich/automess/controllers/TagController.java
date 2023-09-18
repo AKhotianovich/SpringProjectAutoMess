@@ -2,9 +2,8 @@ package by.hotianovich.automess.controllers;
 
 
 
-import by.hotianovich.automess.entity.PersonCar;
-import by.hotianovich.automess.services.MakeService;
-import by.hotianovich.automess.services.PersonCarService;
+import by.hotianovich.automess.entity.UserCar;
+import by.hotianovich.automess.services.UserCarService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,12 +16,12 @@ import java.util.List;
 @AllArgsConstructor
 public class TagController {
 
-    private final PersonCarService personCarService;
+    private final UserCarService userCarService;
 
     @GetMapping("/tag/{tagMake}")
     public String showPerson(@PathVariable("tagMake") String tag, Model model) {
-        List<PersonCar> personCars = personCarService.findTagMakeCar(tag);
-        model.addAttribute("personCars", personCars);
+        List<UserCar> userCars = userCarService.findTagMakeCar(tag);
+        model.addAttribute("personCars", userCars);
         return "index";
     }
 }

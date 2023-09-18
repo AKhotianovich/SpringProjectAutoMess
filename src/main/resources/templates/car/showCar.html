@@ -15,16 +15,16 @@
         <div class="container py-3">
             </div>
 
-            <div class="row" th:each="personCar : ${personCars}">
+            <div class="row" th:each="userCar : ${userCars}">
                 <div class="col-lg-4">
                     <div class="card mb-4">
                         <div class="card-body text-center" style="background-color: #dfe0e1">
                             <img src="//avatars.mds.yandex.net/get-verba/1030388/2a00000179af8e23344d871bcfa394f0c60d/dealer_logo"
                                  alt="avatar"
                                  class="rounded-circle img-fluid" style="width: 150px;">
-                            <h5 class="my-3"><p th:text="${personCar.makeId.mark}"></p> <p th:text="${personCar.carModel}"></p></h5>
-                            <p class="text-muted mb-1 my-3" th:text="${personCar.licensePlate}"></p>
-                            <p class="text-muted mb-4" th:text="${personCar.carVin}"></p>
+                            <h5 class="my-3"><p th:text="${userCar.makeId.mark}"></p> <p th:text="${userCar.carModel}"></p></h5>
+                            <p class="text-muted mb-1 my-3" th:text="${userCar.licensePlate}"></p>
+                            <p class="text-muted mb-4" th:text="${userCar.carVin}"></p>
                             <div class="d-flex justify-content-center mb-2">
                                 <button type="button" class="btn btn-primary">Follow</button>
                                 <button type="button" class="btn btn-outline-primary ms-1">Message</button>
@@ -62,7 +62,7 @@
                                     <p class="mb-0">First Name</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0" th:text="${personCar.personId.firstName}"></p>
+                                    <p class="text-muted mb-0" th:text="${userCar.personId.firstName}"></p>
                                 </div>
                             </div>
                             <hr>
@@ -71,7 +71,7 @@
                                     <p class="mb-0">Last Name</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0" th:text="${personCar.personId.lastName}"></p>
+                                    <p class="text-muted mb-0" th:text="${userCar.personId.lastName}"></p>
                                 </div>
                             </div>
                             <hr>
@@ -80,7 +80,7 @@
                                     <p class="mb-0">Phone number</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0" th:text="${personCar.personId.phoneNumber}"></p>
+                                    <p class="text-muted mb-0" th:text="${userCar.personId.phoneNumber}"></p>
                                 </div>
                             </div>
                             <hr>
@@ -89,7 +89,7 @@
                                     <p class="mb-0">Email</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0" th:text="${personCar.personId.email}"></p>
+                                    <p class="text-muted mb-0" th:text="${userCar.personId.email}"></p>
                                 </div>
                             </div>
                         </div>

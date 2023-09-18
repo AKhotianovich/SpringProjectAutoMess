@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/registration}" method="post" th:object="${User}">
+  <input th:field="*{login}" type="text" name="login" id="login">Login</input>
+  <input th:field="*{password}" type="text" name="password" id="password">password</input>
+  <input th:field="*{email}" type="text" name="email" id="email">email</input>
+  <input th:field="*{phoneNumber}" type="text" name="phoneNumber" id="phoneNumber">phoneNumber</input>
+  <input th:field="*{firstName}" type="text" name="firstName" id="firstName">firstName</input>
+  <input th:field="*{lastName}" type="text" name="lastName" id="lastName">lastName</input>
+    <input type="submit" value="registration">
+</form>
+</body>
+</html>

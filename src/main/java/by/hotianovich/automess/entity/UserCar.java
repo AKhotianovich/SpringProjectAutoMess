@@ -9,11 +9,11 @@ import lombok.Setter;
 
 
 @Entity
-@Table(name = "person_car")
+@Table(name = "usercars")
 @Getter
 @Setter
 @NoArgsConstructor
-public class PersonCar {
+public class UserCar {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,21 +21,24 @@ public class PersonCar {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "make_id", referencedColumnName = "id")
-    private Make makeId;
+    @JoinColumn(name = "brand_id", referencedColumnName = "id")
+    private CarBrands brandId;
 
     @ManyToOne
-    @JoinColumn(name = "person_id", referencedColumnName = "id")
-    private Person personId;
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User userId;
 
-    @Column(name = "car_model")
+    @Column(name = "model")
     private String carModel;
 
     @Column(name = "license_plate")
     private String licensePlate;
 
-    @Column(name = "car_vin")
+    @Column(name = "vin_code")
     private String carVin;
+
+//    @Column(name = "car_photo")
+//    private Byte[] car_photo;
 
 
 }

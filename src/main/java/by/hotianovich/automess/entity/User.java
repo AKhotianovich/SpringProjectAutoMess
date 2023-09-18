@@ -8,11 +8,11 @@ import lombok.Setter;
 import java.util.List;
 
 @Entity
-@Table(name="Person")
+@Table(name="Users")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Person {
+public class User {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +25,13 @@ public class Person {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "email")
+    //@Size(min = 2, max = 100, message = "not valid")
+    private String email;
+
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
     @Column(name = "first_name")
     //@Size(min = 2, max = 100, message = "not valid")
     private String firstName;
@@ -33,15 +40,11 @@ public class Person {
     //@Size(min = 2, max = 100, message = "not valid")
     private String lastName;
 
-    @Column(name = "email")
+    @Column(name = "role")
     //@Size(min = 2, max = 100, message = "not valid")
-    private String email;
+    private ERole role = ERole.USER_ROLE;
 
-    @Column(name = "phone_number")
-    private String phoneNumber;
-
-
-    @OneToMany(mappedBy = "personId")
-    private List<PersonCar> cars;
+    @OneToMany(mappedBy = "userId")
+    private List<UserCar> cars;
 
 }
