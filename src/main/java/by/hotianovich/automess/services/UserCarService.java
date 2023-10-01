@@ -35,6 +35,10 @@ public class UserCarService {
         return userCarRepository.findByLicensePlateContaining(licensePlate);
     }
 
+//    public List<UserCar> findByUserId(int UserId) {
+//        return userCarRepository.findByUserId(UserId);
+//    }
+
     public List<UserCar> findTagMakeCar(String tag) {
         return userCarRepository.findTagMakeCar(tag);
     }

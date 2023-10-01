@@ -1,6 +1,7 @@
 package by.hotianovich.automess.security;
 
 import by.hotianovich.automess.entity.User;
+import by.hotianovich.automess.entity.UserCar;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,9 +24,10 @@ public class UserDetailsImpl implements UserDetails {
     private String phoneNumber;
     private String firstName;
     private String lastName;
+    private List<UserCar> carBrands;
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserDetailsImpl(Integer id, String login, String password, String email, String phoneNumber, String firstName, String lastName, Collection<? extends GrantedAuthority> authorities) {
+    public UserDetailsImpl(Integer id, String login, String password, String email, String phoneNumber, String firstName, String lastName, List<UserCar> carBrands, Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -33,6 +35,7 @@ public class UserDetailsImpl implements UserDetails {
         this.phoneNumber = phoneNumber;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.carBrands = carBrands;
         this.authorities = authorities;
     }
 
@@ -46,6 +49,7 @@ public class UserDetailsImpl implements UserDetails {
                 user.getPhoneNumber(),
                 user.getFirstName(),
                 user.getLastName(),
+                user.getCars(),
                 authorityList);
     }
 

@@ -1,18 +1,135 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<form th:action="@{/registration}" method="post" th:object="${User}">-->
+<!--  <input th:field="*{login}" type="text" name="login" id="login">Login</input>-->
+<!--  <input th:field="*{password}" type="text" name="password" id="password">password</input>-->
+<!--  <input th:field="*{email}" type="text" name="email" id="email">email</input>-->
+<!--  <input th:field="*{phoneNumber}" type="text" name="phoneNumber" id="phoneNumber">phoneNumber</input>-->
+<!--  <input th:field="*{firstName}" type="text" name="firstName" id="firstName">firstName</input>-->
+<!--  <input th:field="*{lastName}" type="text" name="lastName" id="lastName">lastName</input>-->
+<!--    <input type="submit" value="registration">-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+    <title>Registration</title>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+    <link href='https://bootstraptema.ru/snippets/form/2017/recaptcha/custom.css' rel='stylesheet' type='text/css'>
 </head>
 <body>
-<form th:action="@{/registration}" method="post" th:object="${User}">
-  <input th:field="*{login}" type="text" name="login" id="login">Login</input>
-  <input th:field="*{password}" type="text" name="password" id="password">password</input>
-  <input th:field="*{email}" type="text" name="email" id="email">email</input>
-  <input th:field="*{phoneNumber}" type="text" name="phoneNumber" id="phoneNumber">phoneNumber</input>
-  <input th:field="*{firstName}" type="text" name="firstName" id="firstName">firstName</input>
-  <input th:field="*{lastName}" type="text" name="lastName" id="lastName">lastName</input>
-    <input type="submit" value="registration">
-</form>
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-8 col-lg-offset-2">
+
+            <h1 class="text-center">Registration in AUTOMESS</h1>
+
+            <p class="lead">Enter your actual information</p>
+
+
+            <form method="post" role="form" th:action="@{/registration}" th:object="${User}">
+
+                <div class="messages"></div>
+
+                <div class="controls">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="firstName">Firstname *</label>
+                                <input id="firstName" type="text" name="firstName" class="form-control" th:field="*{firstName}" placeholder="Please enter your firstname *" required="required" data-error="Firstname is required.">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="lastName">Lastname *</label>
+                                <input id="lastName" type="text" name="lastName" class="form-control" th:field="*{lastName}" placeholder="Please enter your lastname *" required="required" data-error="Lastname is required.">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input id="email" type="email" name="email" class="form-control" th:field="*{email}" placeholder="Please enter your email *" required="required" data-error="Valid email is required.">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="phoneNumber">Phone *</label>
+                                <input id="phoneNumber" type="tel" name="phoneNumber" class="form-control" th:field="*{phoneNumber}" placeholder="Please enter your phone *" required="required" data-error="phone is required.">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="password">password *</label>
+                                <input id="password" type="password" name="password" class="form-control" th:field="*{password}" placeholder="Please enter your password *" required="required" data-error="Valid password is required.">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="login">Login *</label>
+                                <input th:field="*{login}" type="text" name="login" class="form-control" id="login" placeholder="Please enter your login *" required="required" data-error="login is required.">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+<!--                        <div class="col-md-12">-->
+<!--                            <div class="form-group">-->
+<!--                                &lt;!&ndash; Replace data-sitekey with your own one, generated at https://www.google.com/recaptcha/admin &ndash;&gt;-->
+<!--                                <div class="g-recaptcha" data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S"></div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+                        <div class="col-md-12">
+                            <input type="submit" class="btn btn-success btn-send" value="REGISTRATION">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div><!-- /.col-lg-8 col-lg-offset-2 -->
+
+    </div> <!-- /.row-->
+
+</div> <!-- /.container-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="https://bootstraptema.ru/snippets/form/2017/recaptcha/validator.js"></script>
+<script src="https://bootstraptema.ru/snippets/form/2017/recaptcha/contact.js"></script>
 </body>
 </html>

@@ -47,4 +47,8 @@ public class User {
     @OneToMany(mappedBy = "userId")
     private List<UserCar> cars;
 
+    public List<UserCar> getCars() {
+        return cars;
+    }
+
 }
