@@ -15,145 +15,145 @@
         <div class="container py-3">
         </div>
 
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="card mb-4">
-                        <div class="card-body text-center" style="background-color: #dfe0e1">
-                            <img src="//avatars.mds.yandex.net/get-verba/1030388/2a00000179af8e23344d871bcfa394f0c60d/dealer_logo"
-                                 alt="avatar"
-                                 class="rounded-circle img-fluid" style="width: 150px;">
-<!--                            <h5 class="my-3"><p th:text="${user.firstName}"></p> <p th:text="${user.firstName}"></p></h5>-->
-<!--                            <p class="text-muted mb-1 my-3" th:text="${user.firstName}"></p>-->
-<!--                            <p class="text-muted mb-4" th:text="${user.firstName}"></p>-->
-                            <div class="d-flex justify-content-center mb-2">
-                                <button type="button" class="btn btn-primary">Follow</button>
-                                <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-body text-center" style="background-color: #dfe0e1">
+                        <img src="//avatars.mds.yandex.net/get-verba/1030388/2a00000179af8e23344d871bcfa394f0c60d/dealer_logo"
+                             alt="avatar"
+                             class="rounded-circle img-fluid" style="width: 150px;">
+                        <!--                            <h5 class="my-3"><p th:text="${user.firstName}"></p> <p th:text="${user.firstName}"></p></h5>-->
+                        <!--                            <p class="text-muted mb-1 my-3" th:text="${user.firstName}"></p>-->
+                        <!--                            <p class="text-muted mb-4" th:text="${user.firstName}"></p>-->
+                        <div class="d-flex justify-content-center mb-2">
+                            <button type="button" class="btn btn-primary">Follow</button>
+                            <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-4 mb-lg-0">
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush rounded-3">
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3"
+                                style="background-color: #dfe0e1">
+                                <i class="fas fa-globe fa-lg text-warning"></i>
+                                <p class="mb-0">https://mdbootstrap.com</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3"
+                                style="background-color: #dfe0e1">
+                                <i class="fab fa-github fa-lg" style="color: #333333;"></i>
+                                <p class="mb-0">mdbootstrap</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3"
+                                style="background-color: #dfe0e1">
+                                <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
+                                <p class="mb-0">@mdbootstrap</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3"
+                                style="background-color: #dfe0e1">
+                                <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
+                                <p class="mb-0">mdbootstrap</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body" style="background-color: #dfe0e1">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">First Name</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0" th:text="${user.firstName}"></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Last Name</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0" th:text="${user.lastName}"></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Phone number</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0" th:text="${user.phoneNumber}"></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Email</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0" th:text="${user.email}"></p>
                             </div>
                         </div>
                     </div>
-                    <div class="card mb-4 mb-lg-0">
-                        <div class="card-body p-0">
-                            <ul class="list-group list-group-flush rounded-3">
-                                <li class="list-group-item d-flex justify-content-between align-items-center p-3" style="background-color: #dfe0e1">
-                                    <i class="fas fa-globe fa-lg text-warning"></i>
-                                    <p class="mb-0">https://mdbootstrap.com</p>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center p-3" style="background-color: #dfe0e1">
-                                    <i class="fab fa-github fa-lg" style="color: #333333;"></i>
-                                    <p class="mb-0">mdbootstrap</p>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center p-3" style="background-color: #dfe0e1">
-                                    <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
-                                    <p class="mb-0">@mdbootstrap</p>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center p-3" style="background-color: #dfe0e1">
-                                    <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
-                                    <p class="mb-0">mdbootstrap</p>
-                                </li>
-                            </ul>
+                </div>
+
+                <div class="col-lg-13">
+                    <div class="card mb-4">
+                        <div class="card-body" style="background-color: #dfe0e1">
+                            <h1>Car List</h1>
+                            <table id="example" class="table table-striped table-bordered">
+                                <tr>
+                                    <th>Brand</th>
+                                    <th>Model</th>
+                                    <th>license Plate</th>
+                                    <th>VIN Code</th>
+
+                                </tr>
+                                <tbody id="carTableBody">
+                                <tr th:each="userCar : ${user.getCarBrands()}" th:data-user-id="${user}" onclick="redirectToProfile(this)">
+                                    <td th:text="${userCar.brandId.brand_name}"></td>
+                                    <td th:text="${userCar.carModel}"></td>
+                                    <td th:text="${userCar.licensePlate}"></td>
+                                    <td th:text="${userCar.carVin}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <a href="/addCar" class="btn btn-primary">Add Car</a>
                         </div>
                     </div>
                 </div>
 
 
-                <div class="col-lg-8">
-                    <div class="card mb-4">
-                        <div class="card-body" style="background-color: #dfe0e1">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">First Name</p>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card mb-4 mb-md-0">
+                            <div class="card-body" style="background-color: #dfe0e1">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <p class="lead fw-normal mb-0">Recent photos</p>
+                                    <p class="mb-0"><a href="#!" class="text-muted">Show all</a></p>
                                 </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0" th:text="${user.firstName}"></p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Last Name</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0" th:text="${user.lastName}"></p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Phone number</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0" th:text="${user.phoneNumber}"></p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Email</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0" th:text="${user.email}"></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card mb-4 mb-md-0">
-                                <div class="card-body" style="background-color: #dfe0e1">
-                                    <h1>Car List</h1>
-                                    <table id="example" class="table table-striped table-bordered">
-                                        <tr>
-                                            <th>Car Model</th>
-                                            <th>License Plate</th>
-                                            <th>First Name</th>
-                                            <th>Phone Number</th>
-                                            <th>Make</th>
-                                        </tr>
-                                        <tbody id="carTableBody">
-                                        <tr th:each="userCar : ${user.getCarBrands()}" th:data-user-id="${userCar.id}" onclick="redirectToProfile(this)">
-                                            <td th:text="${userCar.carModel}"></td>
-                                            <td th:text="${userCar.licensePlate}"></td>
-                                            <td th:text="${userCar.brandId.brand_name}"></td>
-                                            <!--            <td> &lt;!&ndash; Добавлена ячейка для ссылки на профиль &ndash;&gt;-->
-                                            <!--                <a th:href="@{'/' + ${userCar.id}}">Profile</a>-->
-                                            <!--            </td>-->
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card mb-4 mb-md-0">
-                                <div class="card-body" style="background-color: #dfe0e1">
-                                    <div class="d-flex justify-content-between align-items-center mb-4">
-                                        <p class="lead fw-normal mb-0">Recent photos</p>
-                                        <p class="mb-0"><a href="#!" class="text-muted">Show all</a></p>
+                                <div class="row g-2">
+                                    <div class="col mb-2">
+                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
+                                             alt="image 1" class="w-100 rounded-3">
                                     </div>
-                                    <div class="row g-2">
-                                        <div class="col mb-2">
-                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
-                                                 alt="image 1" class="w-100 rounded-3">
-                                        </div>
-                                        <div class="col mb-2">
-                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
-                                                 alt="image 1" class="w-100 rounded-3">
-                                        </div>
+                                    <div class="col mb-2">
+                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
+                                             alt="image 1" class="w-100 rounded-3">
                                     </div>
-                                    <div class="row g-2">
-                                        <div class="col">
-                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp"
-                                                 alt="image 1" class="w-100 rounded-3">
-                                        </div>
-                                        <div class="col">
-                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp"
-                                                 alt="image 1" class="w-100 rounded-3">
-                                        </div>
+                                </div>
+                                <div class="row g-2">
+                                    <div class="col">
+                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp"
+                                             alt="image 1" class="w-100 rounded-3">
+                                    </div>
+                                    <div class="col">
+                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp"
+                                             alt="image 1" class="w-100 rounded-3">
                                     </div>
                                 </div>
                             </div>
@@ -161,6 +161,7 @@
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 </div>
 </body>

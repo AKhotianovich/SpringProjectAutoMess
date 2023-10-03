@@ -30,6 +30,10 @@ public class UserCarService {
         return personCar.orElse(null);
     }
 
+    public void saveUserCar(UserCar userCar){
+        userCarRepository.save(userCar);
+    }
+
 
     public List<UserCar> findByLicensePlateContaining(String licensePlate) {
         return userCarRepository.findByLicensePlateContaining(licensePlate);

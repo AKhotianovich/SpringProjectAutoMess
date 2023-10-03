@@ -26,11 +26,10 @@ public class TagController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
             UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-            String username = userDetails.getUsername();
-            model.addAttribute("username", username);
+            model.addAttribute("user", userDetails);
         }
         List<UserCar> userCars = userCarService.findTagMakeCar(tag);
-        model.addAttribute("personCars", userCars);
+        model.addAttribute("userCar", userCars);
         return "index";
     }
 }

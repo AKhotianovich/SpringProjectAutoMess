@@ -42,9 +42,10 @@ public class CarController {
     public String showCars(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
-            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+            UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
             model.addAttribute("user", userDetails);
         }
+        logger.warn("Я работаю главная страница");
         model.addAttribute("userCar", userCarService.findAll());
         return "index";
     }
@@ -58,11 +59,11 @@ public class CarController {
     public String searchCars(@RequestParam("licensePlate") String licensePlate, Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
-            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+            UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
             model.addAttribute("user", userDetails);
         }
         List<UserCar> cars = userCarService.findByLicensePlateContaining(licensePlate);
-        model.addAttribute("personCars", cars);
+        model.addAttribute("userCar", cars);
         return "index";
     }
 
@@ -72,9 +73,10 @@ public class CarController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
             UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-            logger.warn("UserDetails: {}", userDetails.getCarBrands());
             model.addAttribute("user", userDetails);
+            logger.warn("Я не 2 работаю страница пользователя");
         }
+        logger.warn("Я не работаю страница пользователя");
         return "car/showCar";
     }
 }
