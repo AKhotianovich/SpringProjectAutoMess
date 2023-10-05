@@ -22,19 +22,21 @@
     <h1>Car List</h1>
     <table id="example" class="table table-striped table-bordered">
         <tr>
+            <th>Brand</th>
             <th>Car Model</th>
             <th>License Plate</th>
             <th>First Name</th>
             <th>Phone Number</th>
-            <th>Make</th>
+
         </tr>
         <tbody id="carTableBody">
         <tr th:each="userCar : ${userCar}" th:data-user-id="${userCar.id}" onclick="redirectToProfile(this)">
+            <td th:text="${userCar.brandId.brand_name}"></td>
             <td th:text="${userCar.carModel}"></td>
             <td th:text="${userCar.licensePlate}"></td>
             <td th:text="${userCar.getUserId.firstName}"></td>
             <td th:text="${userCar.getUserId.phoneNumber}"></td>
-            <td th:text="${userCar.brandId.brand_name}"></td>
+
 <!--            <td> &lt;!&ndash; Добавлена ячейка для ссылки на профиль &ndash;&gt;-->
 <!--                <a th:href="@{'/' + ${userCar.id}}">Profile</a>-->
 <!--            </td>-->

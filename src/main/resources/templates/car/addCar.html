@@ -20,85 +20,97 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Registration</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-  <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
-  <link href='https://bootstraptema.ru/snippets/form/2017/recaptcha/custom.css' rel='stylesheet' type='text/css'>
+    <title>Registration</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
+    <link href='https://bootstraptema.ru/snippets/form/2017/recaptcha/custom.css' rel='stylesheet' type='text/css'>
 </head>
+<div th:insert="~{forms/header :: header}"></div>
 <body>
 
 <div class="container">
 
-  <div class="row">
-
-    <div class="col-lg-8 col-lg-offset-2">
-
-      <h1 class="text-center">Add your CAR in AUTOMESS</h1>
-
-      <p class="lead">Enter your actual information</p>
 
 
-      <form method="post" role="form" th:action="@{/addCar}" th:object="${car}">
+        <div class="col-lg-12">
+            <div class="col-lg-offset-2">
 
-        <div class="messages"></div>
+            <h1 class="text-center">Add your CAR in AUTOMESS</h1>
 
-        <div class="controls">
+            <p class="lead">Enter your actual information</p>
 
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="carBrand">Car Brand *</label>
-                <select id="carBrand" name="carBrand" class="form-control" required="required" data-error="Car Brand is required.">
-                  <option th:each="carBrand : ${carBrands}" th:value="${carBrand.id}" th:text="${carBrand.brand_name}"></option>
-                </select>
-                <div class="help-block with-errors"></div>
-              </div>
+
+            <form method="post" role="form" th:action="@{/addCar}" th:object="${car}">
+
+                <div class="messages"></div>
+
+                <div class="controls">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="carBrand">Car Brand *</label>
+                                <select id="carBrand" name="carBrand" class="form-control" required="required"
+                                        data-error="Car Brand is required.">
+                                    <option th:each="carBrand : ${carBrands}" th:value="${carBrand.id}"
+                                            th:text="${carBrand.brand_name}"></option>
+                                </select>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="carModel">Model *</label>
+                                <input id="carModel" type="text" name="carModel" class="form-control"
+                                       th:field="*{carModel}" placeholder="Please enter model your car *"
+                                       required="required" data-error="model is required.">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="licensePlate">License plate *</label>
+                                <input id="licensePlate" type="text" name="licensePlate" class="form-control"
+                                       th:field="*{licensePlate}" placeholder="Please enter license plate your car *"
+                                       required="required" data-error="Valid license Plate is required.">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="carVin">Car VIN *</label>
+                                <input id="carVin" type="text" name="carVin" class="form-control" th:field="*{carVin}"
+                                       placeholder="Please enter Vin your car *" required="required"
+                                       data-error="Vin is required.">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <input type="submit" class="btn btn-success btn-send" value="Add Car">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </form>
             </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="carModel">Model *</label>
-                <input id="carModel" type="text" name="carModel" class="form-control" th:field="*{carModel}" placeholder="Please enter model your car *" required="required" data-error="model is required.">
-                <div class="help-block with-errors"></div>
-              </div>
-            </div>
-          </div>
+        </div><!-- /.col-lg-8 col-lg-offset-2 -->
 
-          <div class="row">
-
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="licensePlate">License plate *</label>
-                <input id="licensePlate" type="text" name="licensePlate" class="form-control" th:field="*{licensePlate}" placeholder="Please enter license plate your car *" required="required" data-error="Valid license Plate is required.">
-                <div class="help-block with-errors"></div>
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="carVin">Car VIN *</label>
-                <input id="carVin" type="text" name="carVin" class="form-control" th:field="*{carVin}" placeholder="Please enter Vin your car *" required="required" data-error="Vin is required.">
-                <div class="help-block with-errors"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-
-            <div class="col-md-12">
-              <input type="submit" class="btn btn-success btn-send" value="Add Car">
-            </div>
-
-          </div>
-
-        </div>
-
-      </form>
-
-    </div><!-- /.col-lg-8 col-lg-offset-2 -->
-
-  </div> <!-- /.row-->
+     <!-- /.row-->
 
 </div> <!-- /.container-->
 

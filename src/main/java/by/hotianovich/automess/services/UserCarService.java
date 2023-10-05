@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,6 +31,10 @@ public class UserCarService {
         return personCar.orElse(null);
     }
 
+    @Transactional
+    public void deleteUserCarById(Integer id){
+        Optional<UserCar> userCar = userCarRepository.deleteUserCarById(id);
+    }
     public void saveUserCar(UserCar userCar){
         userCarRepository.save(userCar);
     }

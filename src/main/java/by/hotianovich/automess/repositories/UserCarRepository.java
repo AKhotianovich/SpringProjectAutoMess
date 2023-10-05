@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UserCarRepository extends JpaRepository<UserCar, Integer> {
@@ -19,4 +20,6 @@ public interface UserCarRepository extends JpaRepository<UserCar, Integer> {
 
     @Query("SELECT uc FROM UserCar uc JOIN uc.brandId mk WHERE mk.brand_name LIKE %:tag%")
     List<UserCar> findTagMakeCar(@Param("tag") String tag);
+
+    Optional<UserCar> deleteUserCarById(Integer id);
 }

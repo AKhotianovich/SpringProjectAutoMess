@@ -9,15 +9,13 @@ import by.hotianovich.automess.security.UserDetailsImpl;
 import by.hotianovich.automess.services.UserCarService;
 import by.hotianovich.automess.services.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -48,6 +46,11 @@ public class UserController {
 
     @GetMapping("/addCar")
     public String addCar(Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
+            UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+            model.addAttribute("user", userDetails);
+        }
         List<CarBrands> carBrands = carBrandRepository.findAll();
         model.addAttribute("car", new UserCar());
         model.addAttribute("carBrands", carBrands);
@@ -66,9 +69,16 @@ public class UserController {
             userCar.setUserId(currentUser);
             userCar.setBrandId(carBrand);
             userCarService.saveUserCar(userCar);
-            return "redirect:/addCar";
+            return "redirect:/profile";
         }
 
         return "redirect:/error-page";
+    }
+
+
+    @GetMapping("/deleteCar/{carId}")
+    public ResponseEntity<String> deleteCar(@PathVariable Integer carId, @ModelAttribute("user") User user, Model model) {
+        userCarService.deleteUserCarById(carId);
+        return ResponseEntity.ok("Автомобиль успешно удален");
     }
 }

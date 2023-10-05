@@ -3,6 +3,7 @@ package by.hotianovich.automess.controllers;
 import by.hotianovich.automess.entity.CarBrands;
 import by.hotianovich.automess.entity.User;
 import by.hotianovich.automess.entity.UserCar;
+import by.hotianovich.automess.repositories.UserRepository;
 import by.hotianovich.automess.security.UserDetailsImpl;
 import by.hotianovich.automess.security.UserDetailsServiceImpl;
 import by.hotianovich.automess.services.CarBrandService;
@@ -11,6 +12,7 @@ import by.hotianovich.automess.services.UserService;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -29,7 +31,7 @@ public class CarController {
 
     private final UserCarService userCarService;
 
-    private final UserService userService;
+    private final UserRepository userRepository;
 
     private final CarBrandService carBrandService;
     private static final Logger logger = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
@@ -50,6 +52,20 @@ public class CarController {
         return "index";
     }
 
+    @GetMapping("/profile")
+    public String showPerson(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
+            UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+            String currentUsername = userDetails.getUsername();
+            User currentUser = userRepository.findByEmail(currentUsername).orElseThrow(() -> new RuntimeException("User not found"));
+            model.addAttribute("user", currentUser);
+            logger.warn("Я не 2 работаю страница пользователя");
+        }
+        logger.warn("Я не работаю страница пользователя");
+        return "car/showCar";
+    }
+
     @ExceptionHandler(IllegalArgumentException.class)
     public String handleIllegalArgumentException() {
         return "redirect:/";
@@ -68,16 +84,8 @@ public class CarController {
     }
 
 
-    @GetMapping("/profile")
-    public String showPerson(Model model) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
-            UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-            model.addAttribute("user", userDetails);
-            logger.warn("Я не 2 работаю страница пользователя");
-        }
-        logger.warn("Я не работаю страница пользователя");
-        return "car/showCar";
-    }
+
+
+
 }
 
